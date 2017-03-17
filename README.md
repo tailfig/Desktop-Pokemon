@@ -9,7 +9,7 @@ These Pokémon just run around the desktop and wiggle their tails.
 You can choose a packaged asset by right clicking on the opened window. If you want to set the
 asset programmatically, you can use optional executable arguments which can be either a name of
 packaged asset (e.g., `fluffyvulpix`) or path to the custom asset. It will also search for PNG files
-starting with _eevee.png_, _vulpix.png_, _zorua.png_, _pikachu.png_, and _noteevee.png_ in the
+starting with _eevee.png_, _vulpix.png_, _zorua.png_, _pikachu.png_, _vaporeon.png_, and _noteevee.png_ in the
 current directory.
 
 To make initial window bigger or smaller, append `tiny`, `verysmall`, `smaller`, `small`, `normal`,

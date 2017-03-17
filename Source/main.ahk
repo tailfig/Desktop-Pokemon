@@ -8,14 +8,19 @@ setbatchlines -1
 setwindelay -1
 
 initial()
-defaulteevees:={}
-defaulteeveesmenu:=[]
+defaultpokemon:={}
+pokemonmenu:=[]
+defaultmenu:=[]
 loop % initialconfig.length(){
-	defaulteevees[initialconfig[a_index].id]:=initialconfig[a_index]
-	defaulteeveesmenu.push(initialconfig[a_index].id)
+	thismenu:=initialconfig[a_index]
+	defaultpokemon[thismenu.id]:=thismenu
+	pokemonmenu.push(thismenu.id)
+	if(!thismenu.more){
+		defaultmenu.push(thismenu.id)
+	}
 }
 for name,dest in aliases{
-	defaulteevees[name]:=defaulteevees[dest]
+	defaultpokemon[name]:=defaultpokemon[dest]
 }
 gdip_startup()
 id:=0
@@ -25,7 +30,7 @@ if(!a_args){
 		a_args.push(%a_index%)
 	}
 }
-alleevees:=[]
+allpokemon:=[]
 loadedimg:={}
 thispid:=dllcall("GetCurrentProcessId")
 checkprocess()
@@ -33,7 +38,7 @@ pokemonargs(a_args)
 onmessage(513,"drag")
 onmessage(274,"close")
 onmessage(123,"menu")
-onmessage(74,"addeevee")
+onmessage(74,"addpokemon")
 settimer update,50
 
 return

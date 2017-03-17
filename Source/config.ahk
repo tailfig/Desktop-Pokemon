@@ -1,4 +1,5 @@
 config(byref a,initial:=0){
+	global initialpos
 	if(a.changezoom=1){
 		if(a.zoomcurrent<a.zoommodes.length()){
 			a.changewinx:=(a.winwidth-a.defwidth*a.zoommodes[a.zoomcurrent+1])/2
@@ -23,8 +24,8 @@ config(byref a,initial:=0){
 	a.winheight:=a.defheight*a.wzoom
 	aid:=a.id
 	if(initial){
-		a.winx:=random(100,a_screenwidth-a.winwidth-100)
-		a.winy:=random(100,a_screenheight-a.winheight-100)
+		a.winx:=random(initialpos[4],a_screenwidth-a.winwidth-initialpos[2])
+		a.winy:=random(initialpos[1],a_screenheight-a.winheight-initialpos[3])
 		a.tick:=0
 		a.headn:=1
 		a.headrunn:=0

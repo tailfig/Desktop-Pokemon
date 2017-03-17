@@ -17,9 +17,9 @@ checkprocess(){
 	}
 }
 
-addeevee(wparam:=0,lparam:=0,msg:=0,hwnd:=0){
+addpokemon(wparam:=0,lparam:=0,msg:=0,hwnd:=0){
 	critical
-	if(wparam!="&Add"){
+	if(wparam!=t("add_pokemon")){
 		pokemonargs(strsplit(strget(numget(lparam+a_ptrsize*2)),"`n"),1)
 		return 1
 	}

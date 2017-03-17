@@ -35,6 +35,11 @@
 		"mode":"pikachu",
 		"file":"Images/pikachu-female.png"
 	},{
+		"name":"Vaporeon",
+		"id":"vaporeon",
+		"mode":"vaporeon",
+		"file":"Images/vaporeon.png"
+	},{
 		"name":"Girly Eevee",
 		"id":"girlyeevee",
 		"mode":"eevee",
@@ -92,6 +97,7 @@
 		"vulpix",
 		"zorua",
 		"pikachu",
+		"vaporeon",
 		"noteevee"
 	],
 	"modesettings":{
@@ -99,6 +105,7 @@
 		"vulpix":"Config/vulpix.json",
 		"zorua":"Config/zorua.json",
 		"pikachu":"Config/pikachu.json",
+		"vaporeon":"Config/vaporeon.json",
 		"noteevee":"Config/noteevee.json"
 	},
 	"zoomnames":{
@@ -111,9 +118,13 @@
 		"bigger":7,
 		"huge":8
 	},
+	"zoomdefault":5,
 	"speedmenu":[
-		["&Slow",150],
-		["&Normal",100],
-		["&Fast",66]
-	]
+		["speed_menu1",50],
+		["speed_menu2",100],
+		["speed_menu3",150]
+	],
+	"speeddefault":2,
+	"maxwindows":99,
+	"initialpos":[50,80,50,80]
 }

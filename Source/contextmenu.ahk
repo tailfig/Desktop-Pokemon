@@ -30,18 +30,18 @@ contextmenu(byref a){
 	global speedmenu
 	addmore:=0
 	aid:=a.id
-	menu tray%aid%,add,% t("add_pokemon"),addeevee
+	menu tray%aid%,add,% t("add_pokemon"),addpokemon
 	menu tray%aid%,add
-	loop % a.eeveesmenu.length(){
-		name:=a.eeveesmenu[a_index]
-		if(a.eevees[name].more){
-			menu more%aid%,add,% a.eevees[name].name,appearance
+	loop % a.pokemonmenu.length(){
+		name:=a.pokemonmenu[a_index]
+		if(a.pokemon[name].more){
+			menu more%aid%,add,% a.pokemon[name].name,appearance
 			if(!addmore){
 				menu tray%aid%,add,% t("more_dropdown"),:more%aid%
 				addmore:=1
 			}
 		}else{
-			menu tray%aid%,add,% a.eevees[name].name,appearance
+			menu tray%aid%,add,% a.pokemon[name].name,appearance
 		}
 	}
 	menu tray%aid%,add
@@ -49,23 +49,23 @@ contextmenu(byref a){
 	menu tray%aid%,add,% t("size_smaller"),smaller
 	menu tray%aid%,add
 	loop % speedmenu.length(){
-		menu speed%aid%,add,% speedmenu[speedmenu.length()-a_index+1][1],setspeed
+		menuname:=t(speedmenu[a_index][1])
+		menu speed%aid%,add,% menuname,setspeed
 	}
 	menu tray%aid%,add,% t("speed_dropdown"),:speed%aid%
 	menu tray%aid%,add,% t("stop_running_around"),sit
 	if(a.sitstate){
 		menu tray%aid%,check,% t("stop_running_around")
 	}
-	menu tray%aid%,add,% t("close_pokemon"),closeeevee
+	menu tray%aid%,add,% t("close_pokemon"),closepokemon
 }
 
 appearance(b:=0,c:=0,d:=0,byref a:=0,thismenu:=0,noconfig:=0){
-	global defaulteeveesmenu
 	if(!a){
 		tray:=substr(a_thismenu,1,4)
 		getcurrent(a,a_thismenu,tray)
-		loop % a.eeveesmenu.length(){
-			thismenu:=a.eevees[a.eeveesmenu[a_index]]
+		loop % a.pokemonmenu.length(){
+			thismenu:=a.pokemon[a.pokemonmenu[a_index]]
 			if(a_thismenuitem=thismenu.name){
 				break
 			}
@@ -86,9 +86,9 @@ appearance(b:=0,c:=0,d:=0,byref a:=0,thismenu:=0,noconfig:=0){
 		}
 		a.appearance:={trayaid:trayaid,name:thismenu.name}
 		if(thismenu.custom){
-			a.eevee:=loadfromfile(thismenu.id)
+			a.image:=loadfromfile(thismenu.id)
 		}else{
-			a.eevee:=loadimage(thismenu.id)
+			a.image:=loadimage(thismenu.id)
 		}
 		menu %trayaid%,check,% thismenu.name
 		a.mode:=thismenu.mode
@@ -117,20 +117,23 @@ smaller(b:=0,c:=0,d:=0,byref a:=0){
 		a.dragging:=0
 	}
 }
-setspeed(b:=0,c:=0,d:=0,byref a:=0,thismenu:=0){
+setspeed(b:=0,c:=0,d:=0,byref a:=0){
 	global speedmenu
-	if(!a){
+	if(a){
+		thismenu:=t(speedmenu[a.speed][1])
+	}else{
 		thismenu:=a_thismenuitem
 		getcurrent(a,a_thismenu,"speed")
 	}
 	if(a){
 		aid:=a.id
 		loop % speedmenu.length(){
-			if(speedmenu[a_index][1]=thismenu){
+			menuname:=t(speedmenu[a_index][1])
+			if(menuname=thismenu){
 				menu speed%aid%,check,% thismenu
 				a.speedms:=speedmenu[a_index][2]
 			}else{
-				menu speed%aid%,uncheck,% speedmenu[a_index][1]
+				menu speed%aid%,uncheck,% menuname
 			}
 		}
 	}
@@ -144,22 +147,22 @@ sit(){
 }
 
 getcurrent(byref a,hwnd:=0,menu:=0){
-	global alleevees
+	global allpokemon
 	if(!hwnd){
 		hwnd:=winexist("a")
 	}
 	if(hwnd){
-		loop % alleevees.length(){
-			if(menu&&hwnd=menu alleevees[a_index].id||hwnd=alleevees[a_index].hwnd){
-				a:=alleevees[a_index]
-				return 1
+		loop % allpokemon.length(){
+			if(menu&&hwnd=menu allpokemon[a_index].id||hwnd=allpokemon[a_index].hwnd){
+				a:=allpokemon[a_index]
+				return a_index
 			}
 		}
 	}
 }
 
-closeeevee(b:=0,c:=0,d:=0,byref a:=0){
-	global alleevees,shift
+closepokemon(b:=0,c:=0,d:=0,byref a:=0){
+	global allpokemon,shift
 	if(a){
 		thismenu:="tray" a.id
 	}else if(shift){
@@ -176,15 +179,13 @@ closeeevee(b:=0,c:=0,d:=0,byref a:=0){
 	}else{
 		thismenu:=a_thismenu
 	}
-	loop % alleevees.length(){
-		aid:=alleevees[a_index].id
-		if(a_thismenu="tray" aid){
-			gui %aid%:destroy
-			alleevees.removeat(a_index)
-			break
-		}
+	pos:=getcurrent(a,thismenu,"tray")
+	if(pos){
+		aid:=a.id
+		gui %aid%:destroy
+		allpokemon.removeat(pos)
 	}
-	if(!alleevees.length()){
+	if(!allpokemon.length()){
 		exitapp
 	}
 }

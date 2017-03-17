@@ -25,8 +25,10 @@
 	],
 	"legsrun":[1,1,1,1,1,1],
 	"bodyrun":[1,1,1,1,1,1],
+	"tailposrun":[0,0,0,0,0,0],
 	"legsjump":[1,1,1,1],
 	"bodyjump":[1,1,1,1],
+	"tailposjump":[0,0,0,0],
 	"tail":[
 		"0x0 0x0 -1x0"
 	],

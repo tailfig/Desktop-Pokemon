@@ -1,7 +1,7 @@
 update(){
-	global alleevees
-	loop % alleevees.length(){
-		a:=alleevees[a_index]
+	global allpokemon
+	loop % allpokemon.length(){
+		a:=allpokemon[a_index]
 		if(a&&a_tickcount-a.speedms>=a.timer){
 			animation(a)
 		}
@@ -127,6 +127,7 @@ animation(byref a){
 		}
 		a.legsrunn:=0
 		a.legsjumpn:=0
+		a.tailposn:=0
 		a.tailrunn:=0
 		a.leftearrunn:=0
 		a.rightearrunn:=0
@@ -262,6 +263,7 @@ animation(byref a){
 			a.legsn:=a.legsrun[a.legsrunn]
 			; Some sprites also modify body when running
 			a.bodyn:=a.bodyrun[a.legsrunn]
+			a.tailposn:=a.tailposrun[a.legsrunn]
 			; Next frame will use next iteration
 			a.legsrunn:=mod(a.legsrunn+1,a.legsrun.length()+1)
 		}else if(a.legsjumpn){
@@ -274,10 +276,12 @@ animation(byref a){
 			a.winy:=a.winy+(a.jumpcamrun[a.legsjumpn]+a.rundir)*a.zoom
 			a.legsn:=a.legsjump[a.legsjumpn]
 			a.bodyn:=a.bodyjump[a.legsjumpn]
+			a.tailposn:=a.tailposjump[a.legsjumpn]
 			a.legsjumpn:=mod(a.legsjumpn+1,a.legsjump.length()+1)
 		}else{
 			; Window is staying still
 			a.legsn:=1
+			a.tailposn:=0
 			if(a.mode!="pikachu"){
 				a.bodyn:=1
 			}
@@ -405,22 +409,23 @@ animation(byref a){
 		}
 	}
 	; Draw all body parts onto the bitmap
-	if(a.mode="vulpix"&&a.bodyn=2){
-		; Offset body vertically by 4 pixels
-		drawpart(a,a.tail[a.tailn],0,4)
-	}else{
-		drawpart(a,a.tail[a.tailn])
-	}
+	; Tail
+	drawpart(a,a.tail[a.tailn],0,a.tailposn)
 	if(a.mode="pikachu"&&(a.legsrunn||a.legsjumpn)){
 		; Draw Pikachu's head on top when standing still
 		drawpart(a,a.head[a.headn])
 	}
+	; Body
 	drawpart(a,a.body[a.bodyn])
+	; Legs
 	drawpart(a,a.legs[a.legsn])
+	; Left ear
 	drawpart(a,a.leftear[a.leftearn])
+	; Head
 	if(a.mode!="pikachu"||a.mode="pikachu"&&!a.legsrunn&&!a.legsjumpn){
 		drawpart(a,a.head[a.headn])
 	}
+	; Right ear
 	drawpart(a,a.rightear[a.rightearn])
 	if(!a.dragging){
 		; Offset window horizontal and vertical positions
@@ -465,5 +470,5 @@ drawpart(byref a,coord,x:=0,y:=0){
 	poswh:=strsplit(pos[2],"x")
 	posxy:=strsplit(pos[3],"x")
 	; Apply sprite image onto bitmap with zoom applied (nearest neighbor)
-	gdip_drawimage(a.gbitmap,a.eevee,(posxy[1]+x)*zoom,(posxy[2]+y)*zoom,poswh[1]*zoom+zoom,poswh[2]*zoom+zoom,postl[1]-1,postl[2]-1,poswh[1]+1,poswh[2]+1)
+	gdip_drawimage(a.gbitmap,a.image,(posxy[1]+x)*zoom,(posxy[2]+y)*zoom,poswh[1]*zoom+zoom,poswh[2]*zoom+zoom,postl[1]-1,postl[2]-1,poswh[1]+1,poswh[2]+1)
 }

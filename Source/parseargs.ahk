@@ -1,4 +1,12 @@
 parseargs(byref a,args){
+	global speedmenu,modenames,zoomnames
+	a.filename:=[]
+	if(!args){
+		args:=[]
+	}
+	skipnext:=0
+	skipnum:=0
+	skipsize:=0
 	loop % args.length(){
 		if(skipnext){
 			skipnext:=0
@@ -13,7 +21,8 @@ parseargs(byref a,args){
 				a.sitstate:=1
 			}else if(argname="speed"){
 				loop % speedmenu.length(){
-					if(strlower(strreplace(speedmenu[a_index][1],"&"))=nextarg){
+					thismenu:=t(speedmenu[a_index][1])
+					if(strlower(strreplace(thismenu,"&"))=nextarg){
 						a.speed:=a_index
 						break
 					}
@@ -31,7 +40,7 @@ parseargs(byref a,args){
 				skipnext:=1
 			}
 		}else{
-			if(arg="random"||a.eevees[arg]){
+			if(arg="random"||a.pokemon[arg]){
 				if(!skipnum){
 					a.loadnum:=arg
 					skipnum:=1
@@ -49,7 +58,7 @@ parseargs(byref a,args){
 }
 
 pokemonargs(args,force:=0){
-	global defaulteevees,zoomnames,defaulteeveesmenu
+	global zoomnames,maxwindows
 	forkcount:=0
 	randomize:=1
 	skipnext:=0
@@ -64,7 +73,7 @@ pokemonargs(args,force:=0){
 			argname:=substr(arg,2)
 			if(argname="fork"){
 				nextarg:=floor(args[a_index+1])
-				if(nextarg>=1&&nextarg<=99){
+				if(nextarg>=1&&nextarg<=maxwindows){
 					forkcount:=nextarg
 				}
 				skipnext:=1

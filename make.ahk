@@ -155,10 +155,12 @@ compileahk(){
 		images.push({id:cfg.id,file:cfg.file})
 	}
 	text.="initialconfig:=" json.dump(initialconfig) "`n"
-	text.="aliases:=" json.dump(pokemon.aliases) "`n"
-	text.="modenames:=" json.dump(pokemon.modenames) "`n"
-	text.="zoomnames:=" json.dump(pokemon.zoomnames) "`n"
-	text.="speedmenu:=" json.dump(pokemon.speedmenu) "`n"
+	pokemonignore:={"initialconfig":1,"modesettings":1}
+	for name,value in pokemon{
+		if(!pokemonignore[name]){
+			text.=name ":=" json.dump(value) "`n"
+		}
+	}
 	fileread strings,Config\strings.json
 	text.="tstrings:=" json.dump(json.load(strings)) "`n}"
 	writefile("Build\initial.ahk",text)
