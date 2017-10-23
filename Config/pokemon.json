@@ -5,21 +5,6 @@
 		"mode":"eevee",
 		"file":"Images/eevee.png"
 	},{
-		"name":"Female Eevee",
-		"id":"femaleeevee",
-		"mode":"eevee",
-		"file":"Images/eevee-female.png"
-	},{
-		"name":"Vulpix",
-		"id":"vulpix",
-		"mode":"vulpix",
-		"file":"Images/vulpix.png"
-	},{
-		"name":"FluffyVulpix",
-		"id":"fluffyvulpix",
-		"mode":"vulpix",
-		"file":"Images/vulpix-fluffy.png"
-	},{
 		"name":"Zorua",
 		"id":"zorua",
 		"mode":"zorua",
@@ -30,27 +15,10 @@
 		"mode":"pikachu",
 		"file":"Images/pikachu.png"
 	},{
-		"name":"Female Pikachu",
-		"id":"femalepikachu",
-		"mode":"pikachu",
-		"file":"Images/pikachu-female.png"
-	},{
 		"name":"Vaporeon",
 		"id":"vaporeon",
 		"mode":"vaporeon",
 		"file":"Images/vaporeon.png"
-	},{
-		"name":"Girly Eevee",
-		"id":"girlyeevee",
-		"mode":"eevee",
-		"more":1,
-		"file":"Images/eevee-girly.png"
-	},{
-		"name":"Possessed Eevee",
-		"id":"possessedeevee",
-		"mode":"eevee",
-		"more":1,
-		"file":"Images/eevee-possessed.png"
 	},{
 		"name":"Faceless Eevee",
 		"id":"facelesseevee",
@@ -63,38 +31,13 @@
 		"mode":"eevee",
 		"more":1,
 		"file":"Images/eevee-choco.png"
-	},{
-		"name":"Girly Vulpix",
-		"id":"girlyvulpix",
-		"mode":"vulpix",
-		"more":1,
-		"file":"Images/vulpix-girly.png"
-	},{
-		"name":"Possessed Vulpix",
-		"id":"possessedvulpix",
-		"mode":"vulpix",
-		"more":1,
-		"file":"Images/vulpix-posessed.png"
-	},{
-		"name":"Alolan Vulpix",
-		"id":"alolanvulpix",
-		"mode":"vulpix",
-		"more":1,
-		"file":"Images/vulpix-alolan.png"
 	}],
 	"aliases":{
-		"fluffy":"fluffyvulpix",
-		"female":"femaleeevee",
-		"girly":"girlyeevee",
 		"faceless":"facelesseevee",
-		"choco":"chocoeevee",
-		"possessed":"possessedeevee",
-		"girlyfluffy":"girlyvulpix",
-		"alolan":"alolanvulpix"
+		"choco":"chocoeevee"
 	},
 	"modenames":[
 		"eevee",
-		"vulpix",
 		"zorua",
 		"pikachu",
 		"vaporeon",
@@ -102,7 +45,6 @@
 	],
 	"modesettings":{
 		"eevee":"Config/eevee.json",
-		"vulpix":"Config/vulpix.json",
 		"zorua":"Config/zorua.json",
 		"pikachu":"Config/pikachu.json",
 		"vaporeon":"Config/vaporeon.json",
