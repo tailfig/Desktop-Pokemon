@@ -8,8 +8,8 @@ These Pokémon just run around the desktop and wiggle their tails.
 ## Assets
 You can choose a packaged asset by right clicking on the opened window. If you want to set the
 asset programmatically, you can use optional executable arguments which can be either a name of
-packaged asset (e.g., `fluffyvulpix`) or path to the custom asset. It will also search for PNG files
-starting with _eevee.png_, _vulpix.png_, _zorua.png_, _pikachu.png_, _vaporeon.png_, and _noteevee.png_ in the
+packaged asset (e.g., `chocoeevee`) or path to the custom asset. It will also search for PNG files
+starting with _eevee.png_, _zorua.png_, _pikachu.png_, _vaporeon.png_, and _noteevee.png_ in the
 current directory.
 
 To make initial window bigger or smaller, append `tiny`, `verysmall`, `smaller`, `small`, `normal`,
@@ -27,19 +27,22 @@ This example uses Command Prompt to load the Pikachu asset with compiled executa
 eevee.exe pikachu
 ```
 By default it searches for png files that start with one of the modes, then loads Eevee asset if not
-found, second line loads Vulpix asset with a larger window size:
+found, second line loads Pikachu asset with a larger window size:
 ```
 eevee.exe
-eevee.exe big vulpix
+eevee.exe big pikachu
 ```
-Loads Eevee-based, Vulpix-based, and Zorua-based assets from file:
+Loads Eevee-based, Vaporeon-based, and Zorua-based assets from file:
 ```
 eevee.exe "test\eevee_test.png"
-eevee.exe "test\vulpix_test.png" /mode vulpix
+eevee.exe "test\vaporeon_test.png" /mode vaporeon
 eevee.exe "test\zorua_test.png" /mode zorua
 ```
-Makes Possessed Eevee very large and slow and FluffyVulpix very small and fast:
+Makes Faceless Eevee very large and slow and Pikachu very small and fast:
 ```
-eevee.exe huge possessedeevee /speed slow
-eevee.exe tiny fluffyvulpix /speed fast
+eevee.exe huge facelesseevee /speed slow
+eevee.exe tiny pikachu /speed fast
 ```
+
+## License
+The author of this work hereby waives all claim of copyright (economic and moral) in this work and immediately places it in the public domain; it may be used, distorted or destroyed in any manner whatsoever without further attribution or notice to the creator.
