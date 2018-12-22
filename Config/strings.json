@@ -1,52 +1,52 @@
-{
+﻿{
 "add_pokemon":
-	"&Add",
+	"加える(&A)",
 
 "more_dropdown":
-	"M&ore",
+	"続き(&O)",
 
 "size_larger":
-	"&Larger",
+	"大する(&L)",
 
 "size_smaller":
-	"S&maller",
+	"小する(&M)",
 
 "speed_dropdown":
-	"&Speed",
+	"スピード(&S)",
 
 "speed_menu1":
-	"&Fast",
+	"速い(&F)",
 
 "speed_menu2":
-	"&Normal",
+	"普通(&N)",
 
 "speed_menu3":
-	"&Slow",
+	"遅い(&S)",
 
 "stop_running_around":
-	"S&it",
+	"走らない(&I)",
 
 "close_pokemon":
-	"Close",
+	"閉じる(&C)",
 
 "secretclose1":
-	"Become an eevee",
+	"イーブイになる",
 
 "secretclose2":
-	"Secret button don't click",
+	"秘密のボタンクリックなし",
 
 "secretclose3":
-	"Don't be mean to eevees!",
+	"イーブイに親切に！",
 
 "secretclose_title":
-	"Eevees",
+	"イーブイ",
 
 "secretclose_msg1":
-	"The cute eevees are very sad to see you go 3:",
+	"イーブイは悲しいです市がいなくて寂しい(´・က・`)",
 
 "secretclose_msg2":
-	"Will you open more cute eevees soon?",
+	"再びこのイーブイを開きますか？",
 
 "secretclose_msg3":
-	"Close the cute eevees and be an ugly eevee forever?"
+	"イーブイを閉じる永遠に醜いイーブイになります？"
 }

@@ -1,4 +1,4 @@
-#notrayicon
+﻿#notrayicon
 #include Libs\json.ahk
 #singleinstance
 setworkingdir %a_scriptdir%

@@ -1,9 +1,14 @@
 t(input){
 	global tstrings
 	if(tstrings[input]){
-		return tstrings[input]
+		return unescape(tstrings[input])
 	}
 	return input
+}
+
+unescape(input){
+	q:=chr(34)
+	return json.load("[" q input q "] ")[1]
 }
 
 menu(wparam,lparam,msg,hwnd){
@@ -35,13 +40,13 @@ contextmenu(byref a){
 	loop % a.pokemonmenu.length(){
 		name:=a.pokemonmenu[a_index]
 		if(a.pokemon[name].more){
-			menu more%aid%,add,% a.pokemon[name].name,appearance
+			menu more%aid%,add,% unescape(a.pokemon[name].name),appearance
 			if(!addmore){
 				menu tray%aid%,add,% t("more_dropdown"),:more%aid%
 				addmore:=1
 			}
 		}else{
-			menu tray%aid%,add,% a.pokemon[name].name,appearance
+			menu tray%aid%,add,% unescape(a.pokemon[name].name),appearance
 		}
 	}
 	menu tray%aid%,add
@@ -66,7 +71,7 @@ appearance(b:=0,c:=0,d:=0,byref a:=0,thismenu:=0,noconfig:=0){
 		getcurrent(a,a_thismenu,tray)
 		loop % a.pokemonmenu.length(){
 			thismenu:=a.pokemon[a.pokemonmenu[a_index]]
-			if(a_thismenuitem=thismenu.name){
+			if(a_thismenuitem=unescape(thismenu.name)){
 				break
 			}
 		}
@@ -75,7 +80,7 @@ appearance(b:=0,c:=0,d:=0,byref a:=0,thismenu:=0,noconfig:=0){
 		aid:=a.id
 		if(a.appearance){
 			trayaid:=a.appearance.trayaid
-			menu %trayaid%,uncheck,% a.appearance.name
+			menu %trayaid%,uncheck,% unescape(a.appearance.name)
 		}else{
 			a.appearance:={}
 		}
@@ -90,7 +95,7 @@ appearance(b:=0,c:=0,d:=0,byref a:=0,thismenu:=0,noconfig:=0){
 		}else{
 			a.image:=loadimage(thismenu.id)
 		}
-		menu %trayaid%,check,% thismenu.name
+		menu %trayaid%,check,% unescape(thismenu.name)
 		a.mode:=thismenu.mode
 		a.dragging:=0
 		if(!noconfig){

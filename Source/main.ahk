@@ -1,4 +1,4 @@
-#notrayicon
+﻿#notrayicon
 #singleinstance off
 #maxhotkeysperinterval 99000000
 #hotkeyinterval 99000000
@@ -56,3 +56,4 @@ return
 #include loadimage.ahk
 #include compatibility.ahk
 #include ..\Libs\gdip.ahk
+#include ..\Libs\json.ahk

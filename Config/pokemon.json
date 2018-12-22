@@ -1,32 +1,32 @@
-{
+﻿{
 	"initialconfig":[{
-		"name":"Eevee",
+		"name":"イーブイ",
 		"id":"eevee",
 		"mode":"eevee",
 		"file":"Images/eevee.png"
 	},{
-		"name":"Zorua",
+		"name":"ゾルア",
 		"id":"zorua",
 		"mode":"zorua",
 		"file":"Images/zorua.png"
 	},{
-		"name":"Pikachu",
+		"name":"ピカチュウ",
 		"id":"pikachu",
 		"mode":"pikachu",
 		"file":"Images/pikachu.png"
 	},{
-		"name":"Vaporeon",
+		"name":"シャワーズ",
 		"id":"vaporeon",
 		"mode":"vaporeon",
 		"file":"Images/vaporeon.png"
 	},{
-		"name":"Faceless Eevee",
+		"name":"顔のないイーブイ",
 		"id":"facelesseevee",
 		"mode":"eevee",
 		"more":1,
 		"file":"Images/eevee-faceless.png"
 	},{
-		"name":"Choco Eevee",
+		"name":"チョコイーブイ",
 		"id":"chocoeevee",
 		"mode":"eevee",
 		"more":1,
